@@ -2,21 +2,32 @@
   "name": "react-form",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@types/jest": "24.0.20",
-    "@types/node": "12.11.7",
-    "@types/react": "16.9.11",
-    "@types/react-dom": "16.9.3",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0",
-    "typescript": "3.6.4"
-  },
+  "description": "Custom form with react",
+  "license": "MIT",
+  "author": "Andrew Wang",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.5.1",
+    "@progress/kendo-data-query": "^1.5.2",
+    "@progress/kendo-react-dateinputs": "^3.6.0",
+    "@progress/kendo-react-dropdowns": "^3.6.0",
+    "@progress/kendo-react-inputs": "^3.6.0",
+    "@types/node": "12.11.7",
+    "@types/react": "16.9.11",
+    "@types/react-dom": "16.9.3",
+    "moment": "^2.24.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-scripts": "3.2.0",
+    "typescript": "3.6.4"
+  },
+  "devDependencies": {
+    "@types/jest": "24.0.20"
   },
   "eslintConfig": {
     "extends": "react-app"
