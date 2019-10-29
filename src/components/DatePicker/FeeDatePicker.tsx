@@ -1,23 +1,23 @@
 // react
 import React from "react";
-import PropTypes from "prop-types";
 
 // kendo component
-import {DatePicker} from '@progress/kendo-react-dateinputs';
+import {DatePicker, DatePickerChangeEvent, DatePickerProps} from '@progress/kendo-react-dateinputs';
 
 // other
 import moment from 'moment';
-import dateUtil from "view/FEE/common/util/dateUtil";
+import dateUtil from "../util/dateUtil";
 
-class FeeDatePicker extends React.Component {
+interface FeeDatePickerProps extends Omit<DatePickerProps, 'onChange' | 'defaultValue'> {
 
-    static propTypes = {
-        defaultValue: PropTypes.oneOfType([PropTypes.string, PropTypes.instanceOf(Date)]),
-        onChange: PropTypes.func.isRequired,
-    };
+    defaultValue?: Date | string,
+    onChange: (event: DatePickerChangeEvent, newValue: {}) => void
+}
+
+class FeeDatePicker extends React.Component<FeeDatePickerProps, { value?: Date | null }> {
 
     state = {
-        value: null,
+        value: undefined,
     };
 
     componentWillMount() {
@@ -25,15 +25,9 @@ class FeeDatePicker extends React.Component {
         this.setState({
             value: this._getDefaultValue(this.props.defaultValue),
         });
-
-        /*
-        this.setState({
-            value: this.props.defaultValue,
-        });
-        */
     }
 
-    _getDefaultValue = (defaultValue) => {
+    _getDefaultValue = (defaultValue?: Date | string | { date: Date }): Date | undefined => {
 
 
         if (!defaultValue) {
@@ -58,12 +52,12 @@ class FeeDatePicker extends React.Component {
 
         } else {
 
-            return defaultValue;
-
+            throw new Error('you can only set type [object,Date,string] to defaultValue in FeeDatePicker');
+            // return defaultValue;
         }
     };
 
-    handleChange = (event) => {
+    handleChange = (event: DatePickerChangeEvent) => {
 
         const date = event.value;
 
@@ -87,9 +81,11 @@ class FeeDatePicker extends React.Component {
 
     render() {
 
+        const {defaultValue, ...restProps} = this.props;
+
         return (
             <DatePicker
-                {...this.props}
+                {...restProps}
                 width={'90%'}
                 value={this.state.value}
                 format="yyyy/MM/dd"

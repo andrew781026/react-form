@@ -7,20 +7,22 @@ import {Grid} from "@material-ui/core";
 
 // fee shared component
 import moment from "moment";
-import {DatePicker} from "@progress/kendo-react-dateinputs";
+import {DatePicker, DatePickerChangeEvent, DatePickerProps} from "@progress/kendo-react-dateinputs";
 
-class FeeDatePickerFromAndTo extends React.PureComponent {
+interface FeeDatePickerFromAndToProps extends Omit<DatePickerProps, 'onChange' | 'defaultValue'> {
 
-    static propTypes = {
-        defaultFrom: PropTypes.any,
-        defaultTo: PropTypes.any,
-        onFromChange: PropTypes.func.isRequired,
-        onToChange: PropTypes.func.isRequired,
-    };
+    type?: string,
+    defaultFrom?: Date | string,
+    defaultTo?: Date | string,
+    onFromChange: (event: DatePickerChangeEvent, newValue: {}) => void,
+    onToChange: (event: DatePickerChangeEvent, newValue: {}) => void
+}
+
+class FeeDatePickerFromAndTo extends React.PureComponent<FeeDatePickerFromAndToProps, { fromValue?: Date | string, toValue?: Date | string }> {
 
     state = {
-        fromValue: null,
-        toValue: null,
+        fromValue: undefined,
+        toValue: undefined,
     };
 
     componentWillMount() {
@@ -30,7 +32,7 @@ class FeeDatePickerFromAndTo extends React.PureComponent {
         });
     }
 
-    getNewValueObj = (date) => {
+    getNewValueObj = (date?: Date | string) => {
 
         const newValue = (date) ? {
             code: moment(date).format('YYYYMMDD'),
@@ -47,11 +49,12 @@ class FeeDatePickerFromAndTo extends React.PureComponent {
         return newValue;
     };
 
-    isChangeValue = (fromValue, toValue) => (fromValue && toValue && fromValue.getTime() > toValue.getTime()); // 結束日期比開始日期小
+    isChangeValue = (fromValue?: Date, toValue?: Date) => (fromValue && toValue && fromValue.getTime() > toValue.getTime()); // 結束日期比開始日期小
 
-    handleFromChange = (event) => {
+    handleFromChange = (event: DatePickerChangeEvent) => {
 
-        const fromDate = event.value;
+        const fromDate = (event.value) ? event.value : undefined;
+        const toValue = this.state.toValue;
 
         let newToDate;
 
@@ -60,7 +63,7 @@ class FeeDatePickerFromAndTo extends React.PureComponent {
 
             newToDate = fromDate;
 
-        } else if (this.isChangeValue(fromDate, this.state.toValue)) {
+        } else if (this.isChangeValue(fromDate, toValue)) {
 
             newToDate = fromDate;
 
@@ -76,9 +79,9 @@ class FeeDatePickerFromAndTo extends React.PureComponent {
         this.props.onFromChange && this.props.onFromChange(event, newValues);
     };
 
-    handleToChange = (event) => {
+    handleToChange = (event: DatePickerChangeEvent) => {
 
-        const toDate = event.value;
+        const toDate = (event.value) ? event.value : undefined;
         const newFromDate = (this.isChangeValue(this.state.fromValue, toDate)) ? toDate : this.state.fromValue;
         this.setState({fromValue: newFromDate, toValue: toDate});
 

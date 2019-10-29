@@ -1,17 +1,38 @@
 {
-  "name": "react-form",
+  "name": "react-class-custom-form",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "description": "Custom form with react",
   "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "babel": {
+    "presets": [
+      "@babel/react"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andrew781026/react-form.git"
+  },
   "author": "Andrew Wang",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "publish:npm": "SET NODE_ENV=production && if exist dist rmdir /s /q dist && mkdir dist && babel src/components --out-dir dist --copy-files"
   },
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@material-ui/core": "^4.5.1",
     "@progress/kendo-data-query": "^1.5.2",
     "@progress/kendo-react-dateinputs": "^3.6.0",
@@ -27,6 +48,7 @@
     "typescript": "3.6.4"
   },
   "devDependencies": {
+    "@babel/cli": "^7.2.3",
     "@types/jest": "24.0.20"
   },
   "eslintConfig": {
