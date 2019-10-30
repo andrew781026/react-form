@@ -1,24 +1,11 @@
 {
   "name": "react-class-custom-form",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "private": false,
   "description": "Custom form with react",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "babel": {
-    "presets": [
-      "@babel/react"
-    ],
-    "plugins": [
-      [
-        "@babel/plugin-proposal-class-properties",
-        {
-          "loose": true
-        }
-      ]
-    ]
-  },
   "repository": {
     "type": "git",
     "url": "https://github.com/andrew781026/react-form.git"
@@ -32,11 +19,11 @@
     "publish:npm": "SET NODE_ENV=production && if exist dist rmdir /s /q dist && mkdir dist && babel src/components --out-dir dist --copy-files"
   },
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@material-ui/core": "^4.5.1",
     "@progress/kendo-data-query": "^1.5.2",
     "@progress/kendo-react-dateinputs": "^3.6.0",
     "@progress/kendo-react-dropdowns": "^3.6.0",
+    "@progress/kendo-react-grid": "^3.6.0",
     "@progress/kendo-react-inputs": "^3.6.0",
     "@types/node": "12.11.7",
     "@types/react": "16.9.11",
@@ -49,6 +36,7 @@
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@types/jest": "24.0.20"
   },
   "eslintConfig": {
@@ -64,6 +52,19 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "@babel/react"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties",
+        {
+          "loose": true
+        }
+      ]
     ]
   }
 }

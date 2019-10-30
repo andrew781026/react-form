@@ -1264,6 +1264,14 @@
     "@progress/kendo-react-popup" "3.6.0"
     prop-types "^15.6.0"
 
+"@progress/kendo-react-grid@^3.6.0":
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/@progress/kendo-react-grid/-/kendo-react-grid-3.6.0.tgz#8067391f5079774b8417aae69d901e3f567463da"
+  integrity sha512-qEGRa++wy5bw3Bv8zXYuk3chQ6SG8SsTPljn1zgmagoHrHkgcx3j8VpQy/K/8u6/V4IqRYEumxBqzluKarNPEg==
+  dependencies:
+    "@progress/kendo-react-common" "3.6.0"
+    prop-types "^15.6.0"
+
 "@progress/kendo-react-inputs@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@progress/kendo-react-inputs/-/kendo-react-inputs-3.6.0.tgz#f73645cd053a39fe883406aea9724436d2d2838b"

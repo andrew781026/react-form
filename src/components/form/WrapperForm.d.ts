@@ -1,6 +1,7 @@
 import * as React from "react";
+import {CommonFormData, FormFuncs} from "./FormBody";
 
-interface ComponentProps {
+export interface ComponentProps {
 
     formFuncs: object,
     formData: object,
@@ -12,15 +13,14 @@ interface ComponentProps {
     [x: string]: any
 }
 
-interface FormBodyInfo {
+export interface FormBodyInfo {
 
-    // formRef: (formRef: any) => any,
-    props: object,
-    formFuncs: object,
-    formData: object
+    props: any,
+    formFuncs: FormFuncs,
+    formData: CommonFormData
 }
 
-interface WrapperFormProps {
+export interface WrapperFormProps {
 
     /**
      *  form 顯示時的預設值
@@ -30,7 +30,7 @@ interface WrapperFormProps {
     /**
      *  handleChange 後 , 處理要得到甚麼 newValue 的 function
      */
-    getNewData: (input: object) => object,
+    getNewData: (input: any) => any,
 
     /**
      *  handleChange 後 , 根據 singleData , 得到  errMessages 紅色錯誤訊息
@@ -54,7 +54,7 @@ interface WrapperFormProps {
 
 }
 
-interface WrapperFormState {
+export interface WrapperFormState {
 
     /**
      *  singleData 用於顯示資料
@@ -88,5 +88,3 @@ interface WrapperFormState {
 
 }
 
-
-export {WrapperFormProps, WrapperFormState};

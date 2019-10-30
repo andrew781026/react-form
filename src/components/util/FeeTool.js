@@ -151,6 +151,49 @@ const initMessages = ({data, messageChecker}) => {
     return warnMessages;
 };
 
+const getWarnDataMsg = ({fieldName, value, maxLength, chFieldName}) => {
+
+    return (value && value.length >= maxLength) ? {[fieldName]: `提示 : ${chFieldName}至多可輸入${maxLength}個字`} : {[fieldName]: undefined};
+};
+
+const baseGetNewData = ({fieldName, value}) => {
+
+    if (typeof fieldName === "object") {
+
+        const {from, to} = fieldName;
+        const {fromValue, toValue} = value;
+
+        return {
+            [`${from}Obj`]: fromValue,
+            [from]: fromValue.code,
+            [`${to}Obj`]: toValue,
+            [to]: toValue.code,
+        };
+
+    } else if (rightStr(fieldName, 3) === 'Obj') {
+
+        const codeFieldName = getCodeFieldName(fieldName);
+
+        return {
+            [codeFieldName]: value && value.code,
+            [fieldName]: value,
+        };
+
+    } else if (rightStr(fieldName, 4).toLowerCase() === 'date') {
+
+        return {
+            [`${fieldName}Obj`]: value,
+            [fieldName]: value && value.code
+        };
+
+    } else {
+
+        return {
+            [fieldName]: value
+        };
+    }
+};
+
 export {
     getOptionObj,
     getNumberArray,
@@ -167,5 +210,7 @@ export {
     objNotEmpty,
     smoothScrollTo,
     rightStr,
+    baseGetNewData,
+    getWarnDataMsg,
     leftStr,
 };

@@ -1,7 +1,7 @@
-
 export interface CommonFormData {
     queryInfo: any,
     singleData: any,
+    editData: object,
     formErrMsg: object,
     warnMessages: object,
     errMessages: object,
@@ -9,10 +9,14 @@ export interface CommonFormData {
 }
 
 interface FormFuncs {
-    // eslint-disable-next-line no-restricted-globals
+
+    updateState: ({singleData = {}, warnMessage = {}, errMessage = {}}) => void,
+    initData: ({defaultData, errMsgChecker, warnMsgChecker}: { defaultData?: object, errMsgChecker?: object, warnMsgChecker?: object }) => void,
+    formValidate: () => boolean,
     handleChange: (fieldName) => (event, value) => void,
     getAlertMessage: () => any,
-    getFormErrMsg: () => string | object,
+    setFormErrMsg: (formErrMsg?: any) => void,
+    getFormErrMsg: () => string | object | undefined,
 }
 
 export interface FormBodyProps {
@@ -20,7 +24,7 @@ export interface FormBodyProps {
     /**
      * WrapperQueryForm 定位
      */
-    formRef: any, // React.RefObject<WrapperQueryForm>;
+    formRef: HTMLFormElement, // React.RefObject<WrapperQueryForm>;
 
     /**
      *  表單預設值
