@@ -1,12 +1,14 @@
 {
   "name": "react-class-custom-form",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": false,
   "description": "Custom form with react",
   "license": "MIT",
   "main": "dist/index.js",
   "module": "dist/index.js",
-  "keywords": ["react"],
+  "keywords": [
+    "react"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/andrew781026/react-form.git"
