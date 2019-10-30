@@ -2,9 +2,9 @@
 import * as React from "react";
 
 // share component
-import {AlertBlock} from "component/alert/Alert";
-import FeeAlertBlock from "view/FEE/common/FeeAlertBlock";
-import {objNotEmpty} from "view/FEE/common/util/FeeTool";
+import {AlertBlock} from "./Alert";
+import FeeAlertBlock from "./FeeAlertBlock";
+import {objNotEmpty} from "../util/FeeTool";
 
 class FormAlertBlock extends React.PureComponent {
 

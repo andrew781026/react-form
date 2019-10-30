@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 import PropTypes from "prop-types";
 
 // material component
@@ -6,7 +6,7 @@ import {Dialog, DialogTitle, DialogActions, DialogContent, IconButton, withStyle
 import CloseIcon from '@material-ui/icons/Close';
 
 // share component
-import {StyledButtonCancel} from "component/material/StyledButton";
+import {StyledButtonCancel} from "./button/StyledButton";
 
 const popupStyles = () => ({
     listitem: {

@@ -1,4 +1,4 @@
-import {getDebounceFunc, getOptionObj, baseGetNewData, getWarnDataMsg} from "src/components/util/FeeTool";
+import {getDebounceFunc, getOptionObj, baseGetNewData, getWarnDataMsg} from "../components/util/FeeTool";
 
 const fieldMapper = {
     cargoLocation: '貨棧別',
@@ -60,23 +60,7 @@ const errDataFuncs = {
             const checkCustomId = () => {
 
                 // custType = 'C' , 記帳客戶 , 需要用 cargoLocation , customId , effectDate 做檢查
-                ReduxFEE010451B.AsyncMethods.checkCustomId({
-                    custType: singleData.custType,
-                    customId: singleData.customId,
-                    cargoLocation: singleData.cargoLocation,
-                    effectDate: singleData.effectDate
-                }).then(data => {
-
-                    updateState({errMessage: {customId: undefined}});
-
-                }).catch((e) => {
-
-                    console.log('checkCustomId func failed , e=', e);
-
-                    if (e.status === 'W') {
-                        updateState({errMessage: {customId: e.msg}});
-                    }
-                })
+                console.log('errDataFuncs.customId.checkCustomId');
             };
 
             // 直接使用 debounce , 1 秒內使用者沒變更 , 才執行 checkCustomId 函式
@@ -105,66 +89,18 @@ const errDataFuncs = {
 
                 try {
 
-                    const {minCharge, custType} = await ReduxFEE010451B.AsyncMethods.checkOthersRateAndGetMinCharge({
-                        chargeType: singleData.chargeType,
-                        effectDate: singleData.effectDate,
-                    });
-
                     console.log('checkOthersRateAndGetMinCharge func success !!');
-
-                    // 取得客戶類型後 , 檢查 客戶編號
-                    const getErrMsgCustomId = async () => {
-
-                        if (!singleData.customId) {
-
-                            return '客戶編號必須有值';
-
-                        } else if (singleData.customId && ['A', 'F', 'I', 'C'].find(item => item === singleData.custType)) {
-
-                            // 如果有效日期不存在 且 客戶類型為記帳客戶
-                            if (!singleData.effectDate && singleData.custType === 'C') {
-
-                                return '檢驗記帳客戶編號時 , 有效日期為必輸條件';
-                            }
-
-                            // 如果貨棧別不存在 且 客戶類型為記帳客戶
-                            if (!singleData.cargoLocation && singleData.custType === 'C') {
-
-                                return '檢驗記帳客戶編號時 , 貨棧別為必輸條件';
-                            }
-
-                            try {
-
-                                await ReduxFEE010451B.AsyncMethods.checkCustomId({
-                                    custType: singleData.custType,
-                                    customId: singleData.customId,
-                                    cargoLocation: singleData.cargoLocation,
-                                    effectDate: singleData.effectDate
-                                });
-
-                            } catch (e) {
-
-                                return e.msg;
-                            }
-                        }
-
-                        return undefined;
-                    };
 
                     updateState({
                         singleData: {
                             _isGettingValue: false,
-                            minCharge,
-                            custType,
-                            custTypeObj: getOptionObj(feeOptions.customerType02Options, custType) || {
-                                code: '0',
-                                show: '全部'
-                            }, // 客戶類型
+                            minCharge: 55,
+                            custType: 66,
+                            custTypeObj: {code: '0', show: '全部'}, // 客戶類型
                         },
                         errMessage: {
                             minCharge: undefined,
                             custType: undefined,
-                            customId: await getErrMsgCustomId()
                         }
                     });
 

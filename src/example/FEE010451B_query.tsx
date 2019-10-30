@@ -14,7 +14,6 @@ import FeeInput from "../components/FeeInput";
 import {FeeStyledForm, FormRow, StyledFormCell} from '../components/form/FeeStyledForm';
 import FeeDatePicker from "../components/DatePicker/FeeDatePicker";
 import FilterableComboBox from "../components/FilterableComboBox";
-import PopupComboBox from "../components/PopupComboBox";
 import WrapperForm from "../components/form/WrapperForm";
 
 // kendo component
@@ -100,25 +99,6 @@ class QueryFormBody extends React.Component<QueryFormBodyProps> {
                         <FeeDatePicker
                             defaultValue={new Date()}
                             onChange={handleChange('effectDate')}
-                        />
-                    </StyledFormCell>
-                    <StyledFormCell
-                        widthWeight={{md: 4}}
-                        cellStatus={feeProperty.cellStatus.editable}
-                        title='費率代碼'
-                    >
-                        <PopupComboBox
-                            title='費率代碼'
-                            data={othersRateData}
-                            onSelect={handleChange('chargeTypeObj')}
-                            textField="chargeDesc"
-                            dataItemKey="chargeType"
-                            columns={
-                                <>
-                                    <GridColumn width='150px' field="chargeType" title="費率代碼" filter='text'/>
-                                    <GridColumn width='300px' field="chargeDesc" title="費率名稱" filter='text'/>
-                                </>
-                            }
                         />
                     </StyledFormCell>
                 </FormRow>

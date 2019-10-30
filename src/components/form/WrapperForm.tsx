@@ -28,7 +28,7 @@ class WrapperForm extends React.Component<WrapperFormProps, WrapperFormState> {
         this.initData({defaultData, errMsgChecker, warnMsgChecker});
     }
 
-    initData = ({defaultData = {}, errMsgChecker = {}, warnMsgChecker = {}}: { defaultData?: object, errMsgChecker?: object, warnMsgChecker?: object }) => {
+    initData = ({defaultData = {}, errMsgChecker = () => ({}), warnMsgChecker = () => ({}),}: { defaultData?: object, errMsgChecker?: any, warnMsgChecker?: any }) => {
 
         this.setState({
             singleData: {

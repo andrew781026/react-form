@@ -1,6 +1,5 @@
 import moment from "moment";
 import numberUtil from "./numberUtil";
-import numeral from "numeral";
 
 const dateUtil = {
     addDays({date, format, days}) {

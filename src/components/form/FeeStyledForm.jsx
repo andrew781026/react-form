@@ -6,17 +6,11 @@
 
 // react
 import * as React from 'react';
-import PropTypes from "prop-types";
 
 // shared component
-import {
-    StyledGrid,
-    StyledGridBorder,
-    StyledTitleGridBorder
-} from "../../../../component/material/StyledGrid";
-import {Title} from "../../../../component/title/Title";
-import FeeErrMsgTooltip from "../FeeErrMsgTooltip";
-import FormAlertBlock from "../FormAlertBlock";
+import {StyledGrid, StyledGridBorder, StyledTitleGridBorder} from "./StyledGrid";
+import {Title} from "./Title";
+import FormAlertBlock from "../alert/FormAlertBlock";
 
 // material component
 import {withStyles} from '@material-ui/core/styles';
@@ -32,13 +26,9 @@ const cellStyles = () => ({
         paddingTop: '10px',
         paddingBottom: '5px',
         paddingRight: '3px',
-        // height: '30px',
-        // lineHeight: '30px'
     },
     input_value: {
         padding: '6px 5px',
-        // height: '30px',
-        // lineHeight: '30px'
     }
 });
 
@@ -126,29 +116,27 @@ class FormCell extends React.Component {
         //   className={`${this.props.classes.from_title} ${this.getCellTitleBgColor()}`}
 
         return (
-            <FeeErrMsgTooltip title={validateMessage} open={showCellErrMsg && Boolean(validateMessage)}>
-                <StyledGrid item {...this.props.widthWeight} className={classes.width_100}>
-                    <StyledGrid container className={classes.high_100}>
-                        <StyledTitleGridBorder
-                            item
-                            className={this.props.classes.from_title}
-                            style={{backgroundColor: this.getCellTitleBgColor()}}
-                        >
-                            <div className={this.props.classes.input_title}>{this.props.title}</div>
-                        </StyledTitleGridBorder>
-                        <StyledGridBorder
-                            item
-                            className={classes.from_value}
-                            style={{backgroundColor: this.getCellValueBgColor()}}
-                        >
-                            <div className={this.props.classes.input_value}>
-                                {this.props.children}
-                                {showCellErrMsg && (this.renderErrMsg(errMessage) || this.renderWarnMsg(warnMessage))}
-                            </div>
-                        </StyledGridBorder>
-                    </StyledGrid>
+            <StyledGrid item {...this.props.widthWeight} className={classes.width_100}>
+                <StyledGrid container className={classes.high_100}>
+                    <StyledTitleGridBorder
+                        item
+                        className={this.props.classes.from_title}
+                        style={{backgroundColor: this.getCellTitleBgColor()}}
+                    >
+                        <div className={this.props.classes.input_title}>{this.props.title}</div>
+                    </StyledTitleGridBorder>
+                    <StyledGridBorder
+                        item
+                        className={classes.from_value}
+                        style={{backgroundColor: this.getCellValueBgColor()}}
+                    >
+                        <div className={this.props.classes.input_value}>
+                            {this.props.children}
+                            {showCellErrMsg && (this.renderErrMsg(errMessage) || this.renderWarnMsg(warnMessage))}
+                        </div>
+                    </StyledGridBorder>
                 </StyledGrid>
-            </FeeErrMsgTooltip>
+            </StyledGrid>
         );
     };
 

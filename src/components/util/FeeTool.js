@@ -1,6 +1,4 @@
-import React from "react";
 import _ from "lodash";
-import {SnackbarProvider} from "notistack";
 
 const getOptionObj = (options, code, defaultShow) => {
     return (options.find(option => option.code === code) || {code, show: defaultShow});
