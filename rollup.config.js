@@ -1,7 +1,4 @@
 import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
-import external from "rollup-plugin-peer-deps-external";
-import resolve from "rollup-plugin-node-resolve";
 import typescript from 'rollup-plugin-typescript';
 
 import pkg from "./package.json";
@@ -21,11 +18,20 @@ export default {
         }
     ],
     plugins: [
-        external(),
         babel(),
-        resolve(),
-        commonjs(),
         typescript()
     ],
-    external: ['@progress/kendo-drawing', 'react-is'] // <-- suppresses the warning
+    external: [ // <-- suppresses the warning
+        'lodash',
+        '@progress/kendo-data-query',
+        '@progress/kendo-drawing',
+        '@progress/kendo-react-dateinputs',
+        '@progress/kendo-react-dropdowns',
+        '@progress/kendo-drawing',
+        '@progress/kendo-react-grid',
+        '@progress/kendo-react-inputs',
+        '@progress/kendo-react-intl',
+        '@progress/kendo-theme-default'
+    ]
 };
+
