@@ -16,6 +16,8 @@ $ npm i react-class-custom-form --save
 
 ## Quick Example
 
+![form-image](https://res.cloudinary.com/andrew781026/image/upload/v1572420622/canvas/form-image_cfe42z.png)
+
 FeeFormHelper - logic helper to do onChange
 
 ```jsx

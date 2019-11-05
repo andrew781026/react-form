@@ -1,8 +1,3 @@
-/*
-    Author: andrew
-    Date: 2019/06/17
-    Usage: FeeStyledForm
-*/
 
 // react
 import * as React from 'react';

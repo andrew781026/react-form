@@ -1,5 +1,5 @@
 import React from "react";
-import DeleteConfirm from "component/deleteconfirm/DeleteConfirm";
+import DeleteConfirm from "./DeleteConfirm";
 
 class FeeDeleteConfirm extends React.PureComponent {
 

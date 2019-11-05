@@ -1,5 +1,5 @@
 export {default as FeeCheckbox} from './FeeCheckbox';
-export {default as FeeDeleteConfirm} from './FeeDeleteConfirm';
+export {default as FeeDeleteConfirm} from './DeleteConfirm/FeeDeleteConfirm';
 export {default as FeeDialog} from './FeeDialog';
 export {WordWrapP, CommentFont} from './FeeFormComponents';
 export {default as FeeInput} from './FeeInput';
@@ -15,9 +15,7 @@ export {default as FeeDatePickerFromAndTo} from './DatePicker/FeeDatePickerFromA
 export * from './form/FeeStyledForm';
 export * from './form/StyledGrid';
 export {Title} from './form/Title';
-export * from './form/FormBody';
 export {default as WrapperForm} from './form/WrapperForm';
-export {FormBodyInfo} from './form/WrapperForm.d';
 export {default as feeProperty} from './property/feeProperty';
 export {default as feeOptions} from './property/options';
 export {default as numberUtil} from './util/numberUtil';
